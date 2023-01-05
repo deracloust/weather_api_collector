@@ -4,27 +4,38 @@ const dotenv = require('dotenv').config()
 // Import of controllers
 const tempConverter = require('./helpers/tempConverter')
 const sequelize = require('./util/database')
+const WeatherData = require('./models/weather_data')
 
-//Define of constants
+// Define of constants
 const cityLat = process.env.LAT
 const cityLon = process.env.LON
 const apiKey = process.env.API_KEY
 const URL = `https://api.openweathermap.org/data/2.5/weather?lat=${cityLat}&lon=${cityLon}&appid=${apiKey}`
 
+// Define of functions
 const collectData = async URL => {
-	const respone = await fetch(URL)
-	const weatherData = await respone.json()
+	try {
+		const respone = await fetch(URL)
+		const weatherData = await respone.json()
 
-	const city = weatherData.name
-	const temp = weatherData.main.temp
-	const humidity = weatherData.main.humidity
-	const pressure = weatherData.main.pressure
-	const windSpeed = weatherData.wind.speed
+		await WeatherData.create({
+			city: weatherData.name,
+			temp: tempConverter(weatherData.main.temp),
+			humidity: weatherData.main.humidity,
+			pressure: weatherData.main.pressure,
+			windSpeed: weatherData.wind.speed,
+		})
+	} catch (err) {
+		console.log(err)
+	}
 }
 
-collectData(URL)
+const syncSQL = async () => {
+	await sequelize.sync()
+}
 
-sequelize
-	.sync()
-	.then(result => console.log(result))
-	.catch(err => console.log(err))
+// Running app
+syncSQL()
+setInterval(() => {
+	collectData(URL)
+}, 60000)

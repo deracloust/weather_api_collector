@@ -1,7 +1,11 @@
 const Sequelize = require('sequelize')
 const sequelize = require('../util/database')
 
-const Weather = sequelize.define('weather', {
+const WeatherData = sequelize.define('data', {
+	city: {
+		type: Sequelize.STRING,
+		allowNull: false,
+	},
 	temp: {
 		type: Sequelize.FLOAT,
 		allowNull: false,
@@ -20,4 +24,4 @@ const Weather = sequelize.define('weather', {
 	},
 })
 
-module.exports = Weather
+module.exports = WeatherData
