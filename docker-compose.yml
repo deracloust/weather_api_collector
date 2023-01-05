@@ -15,6 +15,7 @@ services:
     container_name: mysql-db
     ports:
       - '3306:3306'
+    command: --init-file /util/init.sql
     environment:
       MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
       MYSQL_USER: '${MYSQL_USER}'

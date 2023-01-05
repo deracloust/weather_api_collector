@@ -3,6 +3,7 @@ const dotenv = require('dotenv').config()
 
 // Import of controllers
 const tempConverter = require('./helpers/tempConverter')
+const sequelize = require('./util/database')
 
 //Define of constants
 const cityLat = process.env.LAT
@@ -16,11 +17,14 @@ const collectData = async URL => {
 
 	const city = weatherData.name
 	const temp = weatherData.main.temp
-    const humidity = weatherData.main.humidity
-    const pressure = weatherData.main.pressure
-    const windSpeed = weatherData.wind.speed
-
-    
+	const humidity = weatherData.main.humidity
+	const pressure = weatherData.main.pressure
+	const windSpeed = weatherData.wind.speed
 }
 
 collectData(URL)
+
+sequelize
+	.sync()
+	.then(result => console.log(result))
+	.catch(err => console.log(err))
