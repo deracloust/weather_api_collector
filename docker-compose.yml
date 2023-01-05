@@ -7,6 +7,8 @@ services:
     ports:
       - 3000:3000
     restart: unless-stopped
+    depends_on:
+      - db
     volumes:
       - grafana-data:/var/lib/grafana
 
@@ -21,9 +23,18 @@ services:
       MYSQL_PASSWORD: '${MYSQL_PASSWORD}'
       MYSQL_ROOT_HOST: '${MYSQL_ROOT_HOST}'
       MYSQL_DATABASE: weather
+    restart: unless-stopped
     volumes:
       - .docker/setup.sql:/docker-entrypoint-initdb.d/setup.sql
       - my-db:/var/lib/mysql
+
+  collector:
+    container_name: collector
+    build:
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    restart: unless-stopped
 
 volumes:
   grafana-data:
