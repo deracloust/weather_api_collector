@@ -34,7 +34,7 @@ const syncSQL = async () => {
 	await sequelize.sync()
 }
 
-// Running app
+// Running app (sync SQL data table and then API call every minute)
 syncSQL()
 setInterval(() => {
 	collectData(URL)
