@@ -23,7 +23,7 @@ const collectData = async URL => {
 			temp: tempConverter(weatherData.main.temp),
 			humidity: weatherData.main.humidity,
 			pressure: weatherData.main.pressure,
-			windSpeed: weatherData.wind.speed,
+			windSpeed: weatherData.wind.speed * 3.6,
 		})
 	} catch (err) {
 		console.log(err)
