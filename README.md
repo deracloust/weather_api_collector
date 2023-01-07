@@ -40,7 +40,7 @@ To run the project (tested on Debian 11):
 5. Rename `.env.example` file to `.env`.
 6. Run the containers by using `docker compose up -d` in main folder (includes `docker-compose.yml` file).
 7. When docker compose process will end you can check containers by using `docker ps -a`.
-8. When you run it first time, it takes about 5-10 min to load everything. In first moment `weather_api collector` container will restarting. That's because unable to connect to mySql database.
+8. When you run it first time, it takes about 5-10 min to load everything. In first moment `weather_api collector` container will restarting. That's because app is currently unable to connect to mySql database.
 9. When collector container will stop restarting thats the sign everything is ready.
 10. Go to grafana, by entering `HOST_IP:3000` in your browser.
 11. Login as `admin`, default password is also `admin`.
