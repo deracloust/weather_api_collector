@@ -50,3 +50,4 @@ To run the project (tested on Debian 11):
 
 13. Go to `Dashboards --> Import` and import the dashboard from the repositorium (`dashboards/weather.json`).
 14. When the data is not showing up go to the every panel by clicking on title of the panel and then edit. Then in bottom left corner choose one more time `column` and the click `Run query`. The data should show in the center of the screen. Then click apply in the upper right corner. Repeat that for every panel.
+15. Save changes to your dashboard in upper right corner.
