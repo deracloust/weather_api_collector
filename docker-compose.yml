@@ -30,8 +30,7 @@ services:
 
   collector:
     container_name: collector
-    build:
-      dockerfile: Dockerfile
+    build: .
     depends_on:
       - db
     restart: unless-stopped
