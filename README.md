@@ -11,7 +11,7 @@
 ## Introduction
 
 This project is simply API collector, which collects data from `https://openweathermap.org` API, saves data to the mySQL database and shows the data using `Grafana`.
-All of software are running in Docker containers.
+All of software is running in Docker containers.
 
 ## Technologies used
 
