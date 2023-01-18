@@ -18,6 +18,7 @@ All of software is running in Docker containers.
 - Backend - <b>node.js</b>.
 - Database - <b>mySql</b> used with ORM <b>Sequelize</b>.
 - Frontend - <b>Grafana</b>.
+- Docker.
 
 ## Features
 
